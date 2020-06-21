@@ -10,7 +10,7 @@ import (
 func Handler(w http.ResponseWriter, r *http.Request) {
 	keys, ok := r.URL.Query()["q"]
 
-	w.Header().Add("Content-Type", "application/json")
+	w.Header().Add("Content-Type", "application/json; charset=UTF-8")
 
 	if !ok || len(keys[0]) < 1 {
 		w.WriteHeader(http.StatusBadRequest)
