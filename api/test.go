@@ -3,7 +3,7 @@ package handler
 import (
 	"fmt"
 	"net/http"
-	"ioutil"
+	"io/ioutil"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
@@ -28,5 +28,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 
-	fmt.Fprintf(w, body)
+	bodyString := string(body)
+
+	fmt.Fprintf(w, bodyString)
 }
