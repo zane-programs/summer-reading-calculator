@@ -18,7 +18,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	searchQuery := strings.Replace(keys[0], " ", "+")
+	searchQuery := strings.Replace(keys[0], " ", "+", -1)
 
 	resp, err := http.Get("https://www.googleapis.com/books/v1/volumes?q=" + searchQuery)
 	if err != nil {
