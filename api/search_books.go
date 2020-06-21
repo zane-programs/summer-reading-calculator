@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"io/ioutil"
+	"strings"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
@@ -17,7 +18,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	searchQuery := keys[0]
+	searchQuery := strings.Replace(keys[0], " ", "+")
 
 	resp, err := http.Get("https://www.googleapis.com/books/v1/volumes?q=" + searchQuery)
 	if err != nil {
