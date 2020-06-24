@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "autoprefixer": "^9.8.0",
+    "autoprefixer": "^9.8.4",
     "history": "^5.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^6.0.0-beta.0",
-    "react-scripts": "^2.1.1"
+    "react-scripts": "^3.4.1"
   },
   "scripts": {
     "dev": "BROWSER=none react-scripts start",
