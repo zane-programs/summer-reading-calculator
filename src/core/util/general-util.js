@@ -4,6 +4,22 @@ const SetupState = {
   FINISHED_SETUP: 2,
 };
 
+// pages for setup process purposes
+const AppPages = [
+  {
+    path: "/",
+    setupState: SetupState.NOT_SETUP
+  },
+  {
+    path: "/setup",
+    setupState: SetupState.SETUP_IN_PROGRESS
+  },
+  {
+    path: "/dashboard",
+    setupState: SetupState.FINISHED_SETUP
+  }
+];
+
 const setUserSetupState = (state) =>
   localStorage.setItem("readingSetupState", state.toString());
 
@@ -16,27 +32,39 @@ const getUserSetupState = () => {
   return parseInt(currentSetupState);
 };
 
-const navigateToPage = (navigate, setupState) => {
-  let pathToNavigate;
-  if (setupState === SetupState.NOT_SETUP) {
-    // not setup yet
-    pathToNavigate = "/";
-  } else if (setupState === SetupState.SETUP_IN_PROGRESS) {
-    // setup in progress
-    pathToNavigate = "/setup";
-  } else if (setupState === SetupState.FINISHED_SETUP) {
-    // finished setup
-    pathToNavigate = "/dashboard";
+const getPathForSetupState = givenSetupState => {
+  let setupState = givenSetupState;
+  if (isNaN(setupState) || typeof setupState !== "number") {
+    setUserSetupState(0);
+    setupState = 0;
   }
-  navigate(pathToNavigate);
+  const selectedPage = AppPages.find(page => page.setupState === setupState);
+  if (!selectedPage)
+    throw new Error(`Requested page could not found (with setupState ${setupState})`);
+  return selectedPage.path;
 };
+
+// const navigateToPage = (navigate, setupState) => {
+//   let pathToNavigate;
+//   if (setupState === SetupState.NOT_SETUP) {
+//     // not setup yet
+//     pathToNavigate = "/";
+//   } else if (setupState === SetupState.SETUP_IN_PROGRESS) {
+//     // setup in progress
+//     pathToNavigate = "/setup";
+//   } else if (setupState === SetupState.FINISHED_SETUP) {
+//     // finished setup
+//     pathToNavigate = "/dashboard";
+//   }
+//   navigate(pathToNavigate);
+// };
 
 // const navigateToCorrectPage = navigate => navigateToPage(navigate, getUserSetupState());
 
 export {
   SetupState,
+  getPathForSetupState,
   setUserSetupState,
   getUserSetupState,
-  navigateToPage,
   // navigateToCorrectPage,
 };

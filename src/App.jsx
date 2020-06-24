@@ -3,9 +3,8 @@ import { Routes, Route } from "react-router-dom";
 
 // util
 import {
-  getUserSetupState,
+  getUserSetupState as getUserSetupStateLocalStorage,
   setUserSetupState as setUserSetupStateLocalStorage,
-  SetupState,
 } from "./core/util/general-util.js";
 
 // context
@@ -25,7 +24,7 @@ import NotFound from "./pages/NotFound";
 import "./css/App.css";
 
 function App() {
-  const [setupState, setSetupState] = useState(getUserSetupState()); // setup state context
+  const [setupState, setSetupState] = useState(getUserSetupStateLocalStorage()); // setup state context
   const setupStateContextValue = { setupState, setSetupState };
 
   const { height, width } = useWindowDimensions(); // get window dimensions

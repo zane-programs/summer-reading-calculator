@@ -6,10 +6,7 @@ import Button from "../../components/Button";
 import SetupStateContext from "../../core/context/SetupStateContext";
 import ContainerContext from "../../core/context/ContainerContext";
 
-import {
-  SetupState,
-  navigateToPage,
-} from "../../core/util/general-util";
+import { SetupState, getPathForSetupState } from "../../core/util/general-util";
 
 import "./style.css";
 
@@ -19,8 +16,9 @@ function Welcome() {
   const { containerStyle } = useContext(ContainerContext); // container styling
 
   useEffect(() => {
-    if (setupState !== SetupState.NOT_SETUP) navigateToPage(navigate, setupState);
-  }, []);
+    if (setupState !== SetupState.NOT_SETUP)
+      navigate(getPathForSetupState(setupState));
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="welcome-container" style={containerStyle}>
@@ -32,7 +30,7 @@ function Welcome() {
         classnames={["button-welcome"]}
         onClick={() => {
           setSetupState(SetupState.SETUP_IN_PROGRESS);
-          navigateToPage(navigate, SetupState.SETUP_IN_PROGRESS);
+          navigate(getPathForSetupState(SetupState.SETUP_IN_PROGRESS));
         }}
       >
         Get Started

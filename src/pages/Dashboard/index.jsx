@@ -8,7 +8,7 @@ import ContainerContext from "../../core/context/ContainerContext";
 
 import {
   SetupState,
-  navigateToPage,
+  getPathForSetupState,
 } from "../../core/util/general-util.js";
 
 import "./style.css";
@@ -21,8 +21,8 @@ function Dashboard() {
   // check setup on load
   useEffect(() => {
     if (setupState !== SetupState.FINISHED_SETUP)
-      navigateToPage(navigate, setupState);
-  }, []);
+      navigate(getPathForSetupState(setupState));
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="dashboard-container" style={containerStyle}>
@@ -30,7 +30,7 @@ function Dashboard() {
       <Button
         onClick={() => {
           setSetupState(SetupState.NOT_SETUP);
-          navigateToPage(navigate, SetupState.NOT_SETUP);
+          navigate(getPathForSetupState(SetupState.NOT_SETUP));
         }}
       >
         Reset Setup State (0)
