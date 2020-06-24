@@ -1,0 +1,48 @@
+:root {
+  /* --welcome-container-padding: var(--app-padding); */
+}
+
+@media only screen and (max-width: 900px) {
+  h1.welcome-heading {
+    font-size: 36px;
+  }
+  p.welcome-explanation {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 901px) {
+  h1.welcome-heading {
+    font-size: 4vw;
+  }
+  p.welcome-explanation {
+    font-size: 2vw;
+  }
+}
+
+div.welcome-container {
+  width: calc(100% - (2 * var(--app-padding)));
+  padding: var(--app-padding);
+}
+
+h1.welcome-heading, p.welcome-explanation {
+  text-align: center;
+}
+
+h1.welcome-heading {
+  margin: 10px 0px 20px 0px;
+}
+
+button.button.button-welcome {
+  background: var(--theme-color);
+  color: #fff;
+  
+  width: 100%;
+  min-height: 50px;
+  height: 10vh;
+
+  font-size: 25px;
+  font-weight: 700;
+
+  margin-top: 50px;
+}

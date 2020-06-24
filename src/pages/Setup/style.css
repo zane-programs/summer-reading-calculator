@@ -1,0 +1,8 @@
+div.setup-container {
+  width: calc(100% - (2 * var(--app-padding)));
+  padding: var(--app-padding);
+}
+
+h1.setup-heading {
+  margin-top: 5px;
+}

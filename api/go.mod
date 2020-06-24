@@ -1,3 +1,3 @@
-module example-date
+module summer-reading-api
 
 go 1.12
