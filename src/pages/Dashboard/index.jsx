@@ -16,7 +16,12 @@ import "./style.css";
 function Dashboard() {
   const navigate = useNavigate();
   const { setupState, setSetupState } = useContext(SetupStateContext);
-  const { containerStyle } = useContext(ContainerContext); // container styling
+  const containerContext = useContext(ContainerContext); // container styling
+
+  // set page title
+  useEffect(() => {
+    containerContext.title.setPageTitle("Dashboard");
+  }, [containerContext.title]);
 
   // check setup on load
   useEffect(() => {
@@ -25,7 +30,7 @@ function Dashboard() {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className="dashboard-container" style={containerStyle}>
+    <div className="dashboard-container" style={containerContext.containerStyle}>
       <h1 className="dashboard-heading">Dashboard</h1>
       <Button
         onClick={() => {

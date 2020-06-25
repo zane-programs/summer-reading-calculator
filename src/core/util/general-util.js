@@ -1,4 +1,4 @@
-const SetupState = {
+export const SetupState = {
   NOT_SETUP: 0,
   SETUP_IN_PROGRESS: 1,
   FINISHED_SETUP: 2,
@@ -20,10 +20,10 @@ const AppPages = [
   }
 ];
 
-const setUserSetupState = (state) =>
+export const setUserSetupState = (state) =>
   localStorage.setItem("readingSetupState", state.toString());
 
-const getUserSetupState = () => {
+export const getUserSetupState = () => {
   let currentSetupState = localStorage.getItem("readingSetupState");
   if (currentSetupState === null) {
     // no setup state yet
@@ -32,7 +32,7 @@ const getUserSetupState = () => {
   return parseInt(currentSetupState);
 };
 
-const getPathForSetupState = givenSetupState => {
+export const getPathForSetupState = givenSetupState => {
   let setupState = givenSetupState;
   if (isNaN(setupState) || typeof setupState !== "number") {
     setUserSetupState(0);
@@ -61,10 +61,10 @@ const getPathForSetupState = givenSetupState => {
 
 // const navigateToCorrectPage = navigate => navigateToPage(navigate, getUserSetupState());
 
-export {
-  SetupState,
-  getPathForSetupState,
-  setUserSetupState,
-  getUserSetupState,
-  // navigateToCorrectPage,
-};
+// export {
+//   SetupState,
+//   getPathForSetupState,
+//   setUserSetupState,
+//   getUserSetupState,
+//   // navigateToCorrectPage,
+// };

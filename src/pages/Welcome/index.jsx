@@ -13,7 +13,12 @@ import "./style.css";
 function Welcome() {
   const navigate = useNavigate();
   const { setupState, setSetupState } = useContext(SetupStateContext); // setup state
-  const { containerStyle } = useContext(ContainerContext); // container styling
+  const containerContext = useContext(ContainerContext); // container styling
+
+  // set page title
+  useEffect(() => {
+    containerContext.title.setPageTitle("Welcome");
+  }, [containerContext.title]);
 
   useEffect(() => {
     if (setupState !== SetupState.NOT_SETUP)
@@ -21,7 +26,7 @@ function Welcome() {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className="welcome-container" style={containerStyle}>
+    <div className="welcome-container" style={containerContext.containerStyle}>
       <h1 className="welcome-heading">Reading Calculator</h1>
       <p className="welcome-explanation">
         Use this calculator to set smart goals for your reading.

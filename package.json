@@ -8,7 +8,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^6.0.0-beta.0",
-    "react-scripts": "^3.4.1"
+    "react-scripts": "^3.4.1",
+    "shortid": "^2.2.15"
   },
   "scripts": {
     "dev": "BROWSER=none react-scripts start",
