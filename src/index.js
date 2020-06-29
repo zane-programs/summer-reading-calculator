@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import PWAPrompt from 'react-ios-pwa-prompt';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import './css/index.css';
@@ -10,6 +11,7 @@ ReactDOM.render(
   	<Router>
       <App />
     </Router>
+    <PWAPrompt />
   </React.StrictMode>,
   document.getElementById('root')
 );

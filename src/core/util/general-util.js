@@ -8,16 +8,16 @@ export const SetupState = {
 const AppPages = [
   {
     path: "/",
-    setupState: SetupState.NOT_SETUP
+    setupState: SetupState.NOT_SETUP,
   },
   {
     path: "/setup",
-    setupState: SetupState.SETUP_IN_PROGRESS
+    setupState: SetupState.SETUP_IN_PROGRESS,
   },
   {
     path: "/dashboard",
-    setupState: SetupState.FINISHED_SETUP
-  }
+    setupState: SetupState.FINISHED_SETUP,
+  },
 ];
 
 export const setUserSetupState = (state) =>
@@ -32,39 +32,37 @@ export const getUserSetupState = () => {
   return parseInt(currentSetupState);
 };
 
-export const getPathForSetupState = givenSetupState => {
+export const getPathForSetupState = (givenSetupState) => {
   let setupState = givenSetupState;
   if (isNaN(setupState) || typeof setupState !== "number") {
     setUserSetupState(0);
     setupState = 0;
   }
-  const selectedPage = AppPages.find(page => page.setupState === setupState);
+  const selectedPage = AppPages.find((page) => page.setupState === setupState);
   if (!selectedPage)
-    throw new Error(`Requested page could not found (with setupState ${setupState})`);
+    throw new Error(
+      `Requested page could not found (with setupState ${setupState})`
+    );
   return selectedPage.path;
 };
 
-// const navigateToPage = (navigate, setupState) => {
-//   let pathToNavigate;
-//   if (setupState === SetupState.NOT_SETUP) {
-//     // not setup yet
-//     pathToNavigate = "/";
-//   } else if (setupState === SetupState.SETUP_IN_PROGRESS) {
-//     // setup in progress
-//     pathToNavigate = "/setup";
-//   } else if (setupState === SetupState.FINISHED_SETUP) {
-//     // finished setup
-//     pathToNavigate = "/dashboard";
-//   }
-//   navigate(pathToNavigate);
-// };
+export const updateBooksLocalStorage = (books) =>
+  localStorage.setItem("books", JSON.stringify(books));
 
-// const navigateToCorrectPage = navigate => navigateToPage(navigate, getUserSetupState());
+export const isInteger = (value) => /^\d+$/.test(value);
 
-// export {
-//   SetupState,
-//   getPathForSetupState,
-//   setUserSetupState,
-//   getUserSetupState,
-//   // navigateToCorrectPage,
-// };
+export const datesAreSameDay = (date1, date2) => {
+  // set dates at same time of day (12 AM)
+  date1.setHours(0, 0, 0, 0);
+  date2.setHours(0, 0, 0, 0);
+  // compare dates' times
+  return date1.getTime() === date2.getTime();
+};
+
+export const dateHappenedBefore = (beforeDate, afterDate) => {
+  // set dates at same time of day (12 AM)
+  beforeDate.setHours(0, 0, 0, 0);
+  afterDate.setHours(0, 0, 0, 0);
+  // compare dates' times
+  return beforeDate.getTime() < afterDate.getTime();
+};

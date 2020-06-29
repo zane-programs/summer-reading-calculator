@@ -38,7 +38,16 @@ function Dashboard() {
           navigate(getPathForSetupState(SetupState.NOT_SETUP));
         }}
       >
-        Reset Setup State (0)
+        Reset Setup State (back to 0)
+      </Button>
+      <Button
+        onClick={() => {
+          // resets ALL now
+          localStorage.clear();
+          window.location.reload();
+        }}
+      >
+        Reset ALL
       </Button>
     </div>
   );

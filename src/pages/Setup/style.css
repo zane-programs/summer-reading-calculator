@@ -3,6 +3,114 @@ div.setup-container {
   padding: var(--app-padding);
 }
 
+div.setup-container-grid {
+  display: grid;
+  grid-template-rows: 60px auto 60px;
+
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+
+  margin: 0px;
+  padding: 0px;
+}
+
 h1.setup-heading {
   margin-top: 5px;
+}
+
+div.setup-books-container {
+  overflow: scroll;
+  padding-bottom: var(--app-padding);
+}
+
+/* SetupBookBox component. Should I move this into a different folder?? */
+div.setup-book-box {
+  width: calc(100% - (2 * var(--app-padding)));
+  height: 200px;
+
+  background: #fff;
+  border: none;
+  border-radius: 10px;
+
+  padding: var(--app-padding);
+  margin-bottom: var(--app-padding);
+
+  position: relative;
+}
+/* remove book button */
+div.setup-book-box .setup-remove-book {
+  position: absolute;
+  top: var(--app-padding);
+  right: var(--app-padding);
+
+  width: 35px;
+  height: 35px;
+  font-size: 25px;
+
+  border: none;
+  outline: none;
+  border-radius: 50%;
+
+  background-color: #b71c1c;
+  color: #fff;
+
+  cursor: pointer;
+}
+div.setup-book-box .setup-remove-book div.inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+div.setup-book-box .setup-remove-book div.inner svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  -ms-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+div.setup-book-box div.setup-fields-grid {
+  width: calc(100% - 65px);
+  display: grid;
+  grid-template-rows: auto;
+}
+div.setup-book-box div.setup-fields-grid input {
+  padding: 4px;
+}
+/* date picker fix */
+div.setup-book-box div.setup-fields-grid div.react-datepicker-wrapper input {
+  width: calc(100% - 10px);
+  height: 100%;
+}
+
+/* add book button */
+button.button.button-setup-add-book {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 75px;
+  font-size: 30px;
+  font-weight: 500;
+
+  background: #ddd;
+}
+button.button.button-setup-add-book svg {
+  padding-right: 5px;
+}
+
+/* next button */
+button.button.button-setup-next {
+  width: 100%;
+  height: 100%;
+
+  background: var(--theme-color);
+  color: #fff;
+  font-weight: 700;
+
+  font-size: 22px;
 }
